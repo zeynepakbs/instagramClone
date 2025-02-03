@@ -1,13 +1,10 @@
-package com.example.kotlininstagram
+package view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.kotlininstagram.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val currentUser=auth.currentUser
         if (currentUser != null)
         {
-                val intent=Intent(this,FeedActivity::class.java)
+                val intent=Intent(this, FeedActivity::class.java)
               startActivity(intent)
               finish()
 
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             auth.signInWithEmailAndPassword(email,password).addOnSuccessListener {
-                val intent=Intent(this@MainActivity,FeedActivity::class.java)
+                val intent=Intent(this@MainActivity, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
@@ -63,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
-                val intent=Intent(this@MainActivity,FeedActivity::class.java)
+                val intent=Intent(this@MainActivity, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
